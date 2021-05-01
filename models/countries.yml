@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  name: tenjin
-  tables:
+  - name: tenjin
+    tables:
     - name: countries
       columns:
         - name: name

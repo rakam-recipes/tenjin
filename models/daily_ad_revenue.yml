@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  name: tenjin
-  tables:
+  - name: tenjin
+    tables:
     - name: daily_ad_revenue
       description: Includes ad revenue data by publisher campaigns, date, and country
       meta:

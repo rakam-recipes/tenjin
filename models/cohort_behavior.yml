@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  name: tenjin
-  tables:
+  - name: tenjin
+    tables:
     - name: campaigns
       description: >
         Pre-aggregated view from events table. It includes cohort metrics(such as ltv, retained users) by date, campaign, country, and site.

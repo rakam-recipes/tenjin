@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  name: tenjin
-  tables:
+  - name: tenjin
+    tables:
     - name: bucket_campaign_info
       description: A view that joins campaign buckets and campaigns table
       columns:

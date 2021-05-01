@@ -1,7 +1,7 @@
 version: 2
 sources:
-  name: tenjin
-  tables:
+  - name: tenjin
+    tables:
     - name: ad_engagements
       description: Includes click or impression data for each device. It only has data for non-self attributing ad-networks. We don’t store click or impression data for Google or Facebook.
       meta:

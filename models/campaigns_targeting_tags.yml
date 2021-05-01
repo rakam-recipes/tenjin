@@ -1,24 +1,24 @@
 version: 2
 
 sources:
-  name: tenjin
-  tables:
-    - name: campaigns_targeting_tags
-      description: List of campaign buckets
-      columns:
-        - name: campaign_id
-          meta:
-            rakam.dimension:
-              type: string
-          tests:
+  - name: tenjin
+    tables:
+      - name: campaigns_targeting_tags
+        description: List of campaign buckets
+        columns:
+          - name: campaign_id
+            meta:
+              rakam.dimension:
+                type: string
+            tests:
+              relationships:
+                to: ref('campaigns')
+                field: id
+          - name: targeting_tag_id
+            meta:
+              rakam.dimension:
+                type: string
+                hidden: true
             relationships:
-              to: ref('campaigns')
+              to: ref('targeting_tags')
               field: id
-        - name: targeting_tag_id
-          meta:
-            rakam.dimension:
-              type: string
-              hidden: true
-          relationships:
-            to: ref('targeting_tags')
-            field: id

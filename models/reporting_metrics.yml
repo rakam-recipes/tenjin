@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  name: tenjin
-  tables:
+  - name: tenjin
+    tables:
     - name: reporting_metrics
       description: Includes all non-cohorted metrics that are synced with dashboard data
       columns:

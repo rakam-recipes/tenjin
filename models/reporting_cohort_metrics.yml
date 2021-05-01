@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  name: tenjin
-  tables:
+  - name: tenjin
+    tables:
     - name: reporting_cohort_metrics
       description: Includes all cohorted metrics that are synced with dashboard data
       meta:

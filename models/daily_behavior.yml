@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  name: tenjin
-  tables:
+  - name: tenjin
+    tables:
     - name: daily_behavior
       description: Pre-aggregated view from events table. It includes non-cohort metrics(such as dau, arpdau) by date, campaign, country, and site
       meta:

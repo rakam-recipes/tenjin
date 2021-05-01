@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  name: tenjin
-  tables:
+  - name: tenjin
+    tables:
     - name: events
       description: User event data that comes from Tenjin SDK or 3rd party attribution provider
       meta:
