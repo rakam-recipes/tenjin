@@ -13,10 +13,10 @@ sources:
       columns:
         - name: campaign_id
           tests:
-            relationships:
-              to: source('tenjin', 'campaigns')
-              field: id
-              relationship: many_to_one
+            - relationships:
+                to: source('tenjin', 'campaigns')
+                field: id
+                relationship: many_to_one
         - name: updated_at
         - name: date
         - name: spend

@@ -11,14 +11,15 @@ sources:
               rakam.dimension:
                 type: string
             tests:
-              relationships:
-                to: ref('campaigns')
-                field: id
+              - relationships:
+                  to: ref('campaigns')
+                  field: id
           - name: targeting_tag_id
             meta:
               rakam.dimension:
                 type: string
                 hidden: true
-            relationships:
-              to: ref('targeting_tags')
-              field: id
+            tests:
+              - relationships:
+                  to: ref('targeting_tags')
+                  field: id

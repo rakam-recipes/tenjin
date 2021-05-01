@@ -37,26 +37,26 @@ sources:
       columns:
         - name: app_id
           tests:
-            relationships:
-              to: source('tenjin', 'apps')
-              field: id
-              relationship: many_to_one
+            - relationships:
+                to: source('tenjin', 'apps')
+                field: id
+                relationship: many_to_one
         - name: ad_network_id
           tests:
-            relationships:
-              to: source('tenjin', 'ad_networks')
-              field: id
-              relationship: many_to_one
+            - relationships:
+                to: source('tenjin', 'ad_networks')
+                field: id
+                relationship: many_to_one
         - name: campaign_id
           tests:
-            relationships:
-              to: source('tenjin', 'campaign_buckets')
-              field: id
-              relationship: many_to_one
+            - relationships:
+                to: source('tenjin', 'campaign_buckets')
+                field: id
+                relationship: many_to_one
         - name: country
           tests:
-            relationships:
-              - to: source('tenjin', 'countries')
+            - relationships:
+                to: source('tenjin', 'countries')
                 field: code
                 type: left_join
                 relationship: many_to_one

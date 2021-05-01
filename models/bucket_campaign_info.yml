@@ -16,11 +16,11 @@ sources:
               type: string
               hidden: true
           tests:
-            relationships:
-              to: ref('apps')
-              field: id
-              type: left_join
-              relationship: many_to_one
+            - relationships:
+                to: ref('apps')
+                field: id
+                type: left_join
+                relationship: many_to_one
         - name: app_id
           meta: *string
         - name: ad_network_id
@@ -29,8 +29,8 @@ sources:
               type: string
               hidden: true
           tests:
-            relationships:
-              to: ref('ad_networks')
-              field: id
-              type: left_join
-              relationship: many_to_one
+            - relationships:
+                to: ref('ad_networks')
+                field: id
+                type: left_join
+                relationship: many_to_one

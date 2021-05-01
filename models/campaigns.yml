@@ -14,16 +14,18 @@ sources:
           - name: campaign_bucket_id
             meta: *hidden
             tests:
-              relationships:
-                - to: source('tenjin', 'apps')
+              - relationships:
+                  to: source('tenjin', 'apps')
                   field: id
                   type: inner_join
                   relationship: many_to_one
-                - to: source('tenjin', 'ad_networks')
+              - relationships:
+                  to: source('tenjin', 'ad_networks')
                   field: ad_network_id
                   type: inner_join
                   relationship: many_to_one
-                - to: source('tenjin', 'campaign_buckets')
+              - relationships:
+                  to: source('tenjin', 'campaign_buckets')
                   field: id
                   relationship: one_to_one
                   type: inner_join

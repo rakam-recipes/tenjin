@@ -65,15 +65,15 @@ sources:
               type: string
         - name: country_id
           tests:
-            relationships:
-              - to: source('tenjin', 'countries')
+            - relationships:
+                to: source('tenjin', 'countries')
                 field: code
                 type: left_join
                 relationship: many_to_one
         - name: campaign_id
           tests:
-            relationships:
-              - to: source('tenjin', 'campaigns')
+            - relationships:
+                to: source('tenjin', 'campaigns')
                 field: id
                 type: left_join
                 relationship: many_to_one

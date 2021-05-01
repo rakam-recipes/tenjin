@@ -62,19 +62,19 @@ sources:
                 prefix: "$"
         - name: country
           tests:
-            relationships:
-              to: source('tenjin', 'countries')
-              field: code
-              relationship: many_to_one
+            - relationships:
+                to: source('tenjin', 'countries')
+                field: code
+                relationship: many_to_one
         - name: campaign_id
           tests:
-            relationships:
-              to: source('tenjin', 'campaigns')
-              field: id
-              relationship: many_to_one
+            - relationships:
+                to: source('tenjin', 'campaigns')
+                field: id
+                relationship: many_to_one
         - name: app_id
           tests:
-            relationships:
-              to: source('tenjin', 'apps')
-              field: id
-              relationship: many_to_one
+            - relationships:
+                to: source('tenjin', 'apps')
+                field: id
+                relationship: many_to_one

@@ -56,8 +56,8 @@ sources:
             rakam.dimension:
               type: string
           tests:
-            relationships:
-              - to: source('tenjin', 'campaign')
+            - relationships:
+                to: source('tenjin', 'campaign')
                 field: id
                 relationship: many_to_one
         - name: acquired_at
@@ -89,8 +89,8 @@ sources:
             rakam.dimension:
               type: string
           tests:
-            relationships:
-              - to: source('tenjin', 'apps')
+            - relationships:
+                to: source('tenjin', 'apps')
                 field: id
                 relationship: many_to_one
                 type: left_join
@@ -116,8 +116,8 @@ sources:
               type: string
               hidden: true
           tests:
-            relationships:
-              - to: source('tenjin', 'ad_engagements')
+            - relationships:
+                to: source('tenjin', 'ad_engagements')
                 field: uuid
                 relationship: many_to_one
                 type: left_join
