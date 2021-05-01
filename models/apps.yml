@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: tenjin
     tables:
-    - name: ad_networks
+    - name: apps
       description: List of apps
       columns:
         - name: name
