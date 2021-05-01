@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: tenjin
     tables:
-    - name: campaigns
+    - name: cohort_behavior
       description: >
         Pre-aggregated view from events table. It includes cohort metrics(such as ltv, retained users) by date, campaign, country, and site.
         xday is day of user's lifetime (relative to acquisition timestamp, starting with 0). So “revenue” on xday = 1 means revenue generated on day 1 after the acquisition.
