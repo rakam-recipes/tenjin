@@ -65,3 +65,4 @@ sources:
           meta:
             rakam.measure:
               name: total_transactions
+              aggregation: sum
