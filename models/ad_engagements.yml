@@ -54,7 +54,6 @@ sources:
             rakam.dimension:
               type: string
         - name: site_id
-          description:
           meta:
             rakam.dimension:
               type: string
@@ -69,7 +68,6 @@ sources:
             rakam.dimension:
               type: string
         - name: bundle_id
-          description:
           meta:
             rakam.dimension:
               type: string
@@ -84,12 +82,10 @@ sources:
             rakam.dimension:
               type: string
         - name: created_at
-          description:
           meta:
             rakam.dimension:
               type: timestamp
         - name: site_id
-          description:
           meta:
             rakam.dimension:
               type: string
