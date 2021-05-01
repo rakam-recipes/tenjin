@@ -1,0 +1,13 @@
+sources:
+  name: tenjin
+  tables:
+    - name: countries
+      columns:
+        - name: name
+          meta:
+            rakam.dimension:
+              type: string
+        - name: code
+          meta:
+            rakam.dimension:
+              type: string

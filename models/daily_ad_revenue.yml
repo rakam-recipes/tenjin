@@ -1,0 +1,53 @@
+sources:
+  name: tenjin
+  tables:
+    - name: daily_ad_revenue
+      description: Includes ad revenue data by publisher campaigns, date, and country
+      meta:
+        rakam:
+          mappings:
+            event_timestamp: updated_at
+      columns:
+        - name: date
+          meta:
+            rakam.dimension:
+              type: date
+        - name: updated_at
+          meta:
+            rakam.dimension:
+              type: timestamp
+        - name: revenue
+          description: Ad revenue amount in USD cents
+          meta:
+            rakam.measure:
+              name: total_revenue
+              aggregation: count
+        - name: impressions
+          meta:
+            rakam.measure:
+              name: total_impressions
+              aggregation: sum
+        - name: clicks
+          meta:
+            rakam.measure:
+              name: total_clicks
+              aggregation: sum
+        - name: conversions
+          meta:
+            rakam.measure:
+              name: total_conversions
+              aggregation: sum
+        - name: country
+          tests:
+            relationships:
+              to: source('tenjin', 'countries')
+              field: code
+              relationship: many_to_one
+              type: left_join
+        - name: publisher_app_id
+          tests:
+            relationships:
+              to: source('tenjin', 'publisher_apps')
+              field: id
+              relationship: many_to_one
+              type: left_join

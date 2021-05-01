@@ -1,0 +1,78 @@
+sources:
+  name: tenjin
+  tables:
+    - name: reporting_metrics
+      description: Includes all non-cohorted metrics that are synced with dashboard data
+      columns:
+        - name: date
+          meta:
+            rakam.dimension:
+              type: date
+        - name: platform
+        - name: site_id
+        - name: sessions
+          meta:
+            rakam.measure:
+              aggregation: sum
+        - name: reported_clicks
+          description: allocated clicks from ad network reporting APIs
+          meta:
+            rakam.measure:
+              aggregation: sum
+        - name: reported_installs
+          description: allocated installs from ad network reporting APIs
+          meta:
+            rakam.measure:
+              aggregation: sum
+        - name: tracked_installs
+          description: count of installs tracked by Tenjin attribution
+          meta:
+            rakam.measure:
+              aggregation: sum
+        - name: tracked_impressions
+          description: count of impressions tracked by Tenjin attribution
+          meta:
+            rakam.measure:
+              aggregation: sum
+        - name: tracked_clicks
+          description: count of clicks tracked by Tenjin attribution
+          meta:
+            rakam.measure:
+              aggregation: sum
+        - name: reported_spend
+          meta:
+            rakam.measure:
+              aggregation: sum
+              report:
+                prefix: "$"
+        - name: iap_revenue
+          meta:
+            rakam.measure:
+              aggregation: sum
+              report:
+                prefix: "$"
+        - name: publisher_ad_revenue
+          description: allocated sum of publisher ad revenue from ad network reporting API in USD cents
+          meta:
+            rakam.measure:
+              aggregation: sum
+              report:
+                prefix: "$"
+        - name: country
+          tests:
+            relationships:
+              to: source('tenjin', 'countries')
+              field: code
+              relationship: many_to_one
+        - name: campaign_id
+          tests:
+            relationships:
+              to: source('tenjin', 'campaigns')
+              field: id
+              relationship: many_to_one
+        - name: app_id
+          tests:
+            relationships:
+              to: source('tenjin', 'apps')
+              field: id
+              relationship: many_to_one

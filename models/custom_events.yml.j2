@@ -1,0 +1,15 @@
+#{% set custom_schema = import('../lib/custom_event_schema.yml') %}
+#{% set events = import('./events.yml') %}
+
+views:
+#{% for schema in var('custom_events') %}
+    #{% set current_schema = custom_schema[schema.event] %}
+   - name: "tenjin_event_{{schema.event}}"
+     label: {{schema.event}}
+     target: {{source('tenjin', 'events')}}
+     mappings: {{events.dimensions + current_schema.mappings}}
+     relations: {{events.dimensions + current_schema.relations}}
+     dimensions: {{events.dimensions + current_schema.dimensions}}
+     always_filters:
+       - {dimension: event_type, value: "{{row.event}}", operator: equals}
+#{% endfor %}

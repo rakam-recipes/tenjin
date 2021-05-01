@@ -1,0 +1,19 @@
+sources:
+  name: tenjin
+  tables:
+    - name: ad_networks
+      description: List of apps
+      columns:
+        - name: name
+          meta: &string
+            rakam.dimension:
+              type: string
+        - name: store_id
+          meta: *string
+        - name: platform
+          meta: *string
+        - name: platform
+          meta: *string
+        - name: bundle_id
+          description: ex. com.tenjin.wordfinder
+          meta: *string

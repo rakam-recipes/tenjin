@@ -1,0 +1,9 @@
+sources:
+  name: tenjin
+  tables:
+    - name: ad_networks
+      columns:
+        - name: name
+          meta:
+            rakam.dimension:
+              type: string

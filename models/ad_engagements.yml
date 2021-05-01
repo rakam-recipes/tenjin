@@ -1,0 +1,94 @@
+sources:
+  name: tenjin
+  tables:
+    - name: ad_engagements
+      description: Includes click or impression data for each device. It only has data for non-self attributing ad-networks. We don’t store click or impression data for Google or Facebook.
+      meta:
+        rakam:
+          mappings:
+            event_timestamp: created_at
+          relations:
+            campaigns:
+              relationship: many_to_one
+              type: left_join
+              source: id
+              target: campaign_id
+            countries:
+              relationship: many_to_one
+              type: left_join
+              source: "code"
+              target: "country"
+            apps:
+              relationship: many_to_one
+              type: left_join
+              source: id
+              target: app_id
+            events:
+              relationship: many_to_one
+              type: left_join
+              source: source_uuid
+              target: uuid
+      columns:
+        - name: ip_address
+          meta:
+            rakam.measure:
+              name: unique_devices
+              aggregation: count_unique
+        - name: remote_click_id
+          meta:
+            rakam.measure:
+              name: unique_clicks
+              aggregation: count_unique
+        - name: advertising_id
+          description: IDFA for iOS or Google advertising ID for Android. Lower case, without hyphen.
+          meta:
+            rakam.measure:
+              name: unique_users
+              aggregation: count_unique
+            rakam.dimension:
+              type: string
+        - name: user_agent
+          description: ex. Dalvik/2.1.0 (Linux; U; Android 8.0.0; SM-G570M Build/R16NW)
+          meta:
+            rakam.dimension:
+              type: string
+        - name: site_id
+          description:
+          meta:
+            rakam.dimension:
+              type: string
+        - name: ip_address
+          description: ex. 71.165.85.114
+          meta:
+            rakam.dimension:
+              type: string
+        - name: platform
+          description: ios or android
+          meta:
+            rakam.dimension:
+              type: string
+        - name: bundle_id
+          description:
+          meta:
+            rakam.dimension:
+              type: string
+        - name: event_type
+          description: either clicks or impressions
+          meta:
+            rakam.dimension:
+              type: string
+        - name: attributable
+          description: if the click/impression is used for attribution or not. true or false
+          meta:
+            rakam.dimension:
+              type: string
+        - name: created_at
+          description:
+          meta:
+            rakam.dimension:
+              type: timestamp
+        - name: site_id
+          description:
+          meta:
+            rakam.dimension:
+              type: string

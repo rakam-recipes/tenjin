@@ -1,0 +1,32 @@
+sources:
+  name: tenjin
+  tables:
+    - name: campaigns
+      description: Campaigns that users are attributed to, or campaigns from ad-networks API
+      columns:
+        - name: name
+        - name: ad_network_id
+          meta: &hidden
+            rakam.dimension:
+              hidden: true
+        - name: campaign_bucket_id
+          meta: *hidden
+          tests:
+            relationships:
+              - to: source('tenjin', 'apps')
+                field: id
+                type: inner_join
+                relationship: many_to_one
+              - to: source('tenjin', 'ad_networks')
+                field: ad_network_id
+                type: inner_join
+                relationship: many_to_one
+              - to: source('tenjin', 'campaign_buckets')
+                field: id
+                relationship: one_to_one
+                type: inner_join
+
+        - name: app_id
+          meta: *hidden
+        - name: ad_network_id
+          meta: *hidden

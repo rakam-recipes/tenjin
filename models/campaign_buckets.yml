@@ -1,0 +1,10 @@
+sources:
+  name: tenjin
+  tables:
+    - name: campaign_buckets
+      description: List of campaign buckets
+      columns:
+        - name: name
+          meta:
+            rakam.dimension:
+              type: string

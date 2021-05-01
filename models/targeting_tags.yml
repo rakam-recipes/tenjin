@@ -1,0 +1,12 @@
+sources:
+  name: tenjin
+  tables:
+    - name: targeting_tags
+      description: Includes targeting tag information
+      columns:
+        - name: display
+          description: "Targeting tag name shown on Tenjin dashboard. (Ex. Gender: Male)"
+        - name: standard
+          description: If it's Tenjin's default targeting tag or not.
+        - name: category
+        - name: segment
