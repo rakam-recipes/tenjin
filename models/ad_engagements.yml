@@ -8,28 +8,47 @@ sources:
         rakam:
           mappings:
             event_timestamp: created_at
-          relations:
-            campaigns:
-              relationship: many_to_one
-              type: left_join
-              source: id
-              target: campaign_id
-            countries:
-              relationship: many_to_one
-              type: left_join
-              source: "code"
-              target: "country"
-            apps:
-              relationship: many_to_one
-              type: left_join
-              source: id
-              target: app_id
-            events:
-              relationship: many_to_one
-              type: left_join
-              source: source_uuid
-              target: uuid
       columns:
+        - name: country
+          meta:
+            rakam.dimension:
+              hidden: true
+          tests:
+            - relationships:
+                to: source('tenjin', 'countries')
+                field: code
+                relationship: many_to_one
+                type: left_join
+        - name: campaign_id
+          meta:
+            rakam.dimension:
+              hidden: true
+          tests:
+            - relationships:
+                to: source('tenjin', 'campaigns')
+                field: id
+                relationship: many_to_one
+                type: left_join
+        - name: app_id
+          meta:
+            rakam.dimension:
+              hidden: true
+          tests:
+            - relationships:
+                to: source('tenjin', 'apps')
+                field: id
+                relationship: many_to_one
+                type: left_join
+        - name: source_uuid
+          meta:
+            rakam.dimension:
+              hidden: true
+          tests:
+            - relationships:
+                to: source('tenjin', 'events')
+                field: uuid
+                relationship: many_to_one
+                type: left_join
         - name: ip_address
           meta:
             rakam.measure:
