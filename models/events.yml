@@ -12,7 +12,7 @@ sources:
               aggregation: count
             unique_users:
               aggregation: count_unique
-              sql: "coalesce({{TABLE}}.advertising_id, {{TABLE}}.developer_device_id)"
+              sql: "{{ 'coalesce({{TABLE}}.advertising_id, {{TABLE}}.developer_device_id)' | as_text }}"
           mappings:
             event_timestamp: created_at
             incremental: "created_at"
@@ -21,7 +21,7 @@ sources:
             ad_network:
               to: source('tenjin', 'ad_networks')
               type: left_join
-              sql: "{{TARGET}}.id = {{relation.ad_network.dimension.ad_network_id}}"
+              sql: "{{ '{{TARGET}}.id = {{relation.ad_network.dimension.ad_network_id}}' | as_text }}"
       columns:
         - name: created_at
           description: timestamp when the event was created
