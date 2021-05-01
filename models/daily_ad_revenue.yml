@@ -41,15 +41,15 @@ sources:
               aggregation: sum
         - name: country
           tests:
-            relationships:
-              to: source('tenjin', 'countries')
-              field: code
-              relationship: many_to_one
-              type: left_join
+            - relationships:
+                to: source('tenjin', 'countries')
+                field: code
+                relationship: many_to_one
+                type: left_join
         - name: publisher_app_id
           tests:
-            relationships:
-              to: source('tenjin', 'publisher_apps')
-              field: id
-              relationship: many_to_one
-              type: left_join
+            - relationships:
+                to: source('tenjin', 'publisher_apps')
+                field: id
+                relationship: many_to_one
+                type: left_join
