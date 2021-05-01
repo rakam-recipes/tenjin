@@ -57,7 +57,7 @@ sources:
               type: string
           tests:
             - relationships:
-                to: source('tenjin', 'campaign')
+                to: source('tenjin', 'campaigns')
                 field: id
                 relationship: many_to_one
         - name: acquired_at
