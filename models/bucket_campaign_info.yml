@@ -17,7 +17,7 @@ sources:
               hidden: true
           tests:
             - relationships:
-                to: ref('apps')
+                to: source('tenjin', 'apps')
                 field: id
                 type: left_join
                 relationship: many_to_one
@@ -30,7 +30,7 @@ sources:
               hidden: true
           tests:
             - relationships:
-                to: ref('ad_networks')
+                to: source('tenjin', 'ad_networks')
                 field: id
                 type: left_join
                 relationship: many_to_one

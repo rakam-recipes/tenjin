@@ -12,7 +12,7 @@ sources:
                 type: string
             tests:
               - relationships:
-                  to: ref('campaigns')
+                  to: source('tenjin', 'campaigns')
                   field: id
           - name: targeting_tag_id
             meta:
@@ -21,5 +21,5 @@ sources:
                 hidden: true
             tests:
               - relationships:
-                  to: ref('targeting_tags')
+                  to: source('tenjin', 'targeting_tags')
                   field: id
