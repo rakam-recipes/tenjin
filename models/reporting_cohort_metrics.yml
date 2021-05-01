@@ -79,12 +79,12 @@ sources:
         - name: daily_active_users
           meta:
             rakam.measure:
-              type: average
+              aggregation: average
         - name: iap_revenue
           description: sum of in-app purchase revenue in USD cents
           meta:
             rakam.measure:
-              type: sum
+              aggregation: sum
               label: In-app Purchase Revenue
               report:
                 prefix: "$"
@@ -92,7 +92,7 @@ sources:
           description: allocated sum of publisher ad revenue from ad network reporting API in USD cents
           meta:
             rakam.measure:
-              type: sum
+              aggregation: sum
               label: In-app Purchase Revenue
               report:
                 prefix: "$"
