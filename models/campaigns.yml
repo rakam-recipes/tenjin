@@ -1,10 +1,12 @@
 version: 2
 
 sources:
-  - name: tenjin
+  - name: marketing
     tables:
       - name: campaigns
         description: Campaigns that users are attributed to, or campaigns from ad-networks API
+        meta:
+          hidden: true
         columns:
           - name: name
           - name: ad_network_id
@@ -15,17 +17,17 @@ sources:
             meta: *hidden
             tests:
               - relationships:
-                  to: source('tenjin', 'apps')
+                  to: source('marketing', 'apps')
                   field: id
                   type: inner_join
                   relationship: many_to_one
               - relationships:
-                  to: source('tenjin', 'ad_networks')
+                  to: source('marketing', 'ad_networks')
                   field: ad_network_id
                   type: inner_join
                   relationship: many_to_one
               - relationships:
-                  to: source('tenjin', 'campaign_buckets')
+                  to: source('marketing', 'campaign_buckets')
                   field: id
                   relationship: one_to_one
                   type: inner_join

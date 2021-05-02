@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: tenjin
+  - name: marketing
     tables:
     - name: daily_ad_revenue
       description: Includes ad revenue data by publisher campaigns, date, and country
@@ -42,14 +42,14 @@ sources:
         - name: country
           tests:
             - relationships:
-                to: source('tenjin', 'countries')
+                to: source('marketing', 'countries')
                 field: code
                 relationship: many_to_one
                 type: left_join
         - name: publisher_app_id
           tests:
             - relationships:
-                to: source('tenjin', 'publisher_apps')
+                to: source('marketing', 'publisher_apps')
                 field: id
                 relationship: many_to_one
                 type: left_join

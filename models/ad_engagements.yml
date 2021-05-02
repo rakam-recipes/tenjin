@@ -1,6 +1,6 @@
 version: 2
 sources:
-  - name: tenjin
+  - name: marketing
     tables:
     - name: ad_engagements
       description: Includes click or impression data for each device. It only has data for non-self attributing ad-networks. We don’t store click or impression data for Google or Facebook.
@@ -15,7 +15,7 @@ sources:
               hidden: true
           tests:
             - relationships:
-                to: source('tenjin', 'countries')
+                to: source('marketing', 'countries')
                 field: code
                 relationship: many_to_one
                 type: left_join
@@ -25,7 +25,7 @@ sources:
               hidden: true
           tests:
             - relationships:
-                to: source('tenjin', 'campaigns')
+                to: source('marketing', 'campaigns')
                 field: id
                 relationship: many_to_one
                 type: left_join
@@ -35,7 +35,7 @@ sources:
               hidden: true
           tests:
             - relationships:
-                to: source('tenjin', 'apps')
+                to: source('marketing', 'apps')
                 field: id
                 relationship: many_to_one
                 type: left_join
@@ -45,7 +45,7 @@ sources:
               hidden: true
           tests:
             - relationships:
-                to: source('tenjin', 'events')
+                to: source('marketing', 'events')
                 field: uuid
                 relationship: many_to_one
                 type: left_join

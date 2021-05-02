@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: tenjin
+  - name: marketing
     tables:
     - name: bucket_campaign_info
       description: A view that joins campaign buckets and campaigns table
@@ -17,7 +17,7 @@ sources:
               hidden: true
           tests:
             - relationships:
-                to: source('tenjin', 'apps')
+                to: source('marketing', 'apps')
                 field: id
                 type: left_join
                 relationship: many_to_one
@@ -30,7 +30,7 @@ sources:
               hidden: true
           tests:
             - relationships:
-                to: source('tenjin', 'ad_networks')
+                to: source('marketing', 'ad_networks')
                 field: id
                 type: left_join
                 relationship: many_to_one

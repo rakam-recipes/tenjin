@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: tenjin
+  - name: events
     tables:
     - name: events
       description: User event data that comes from Tenjin SDK or 3rd party attribution provider
@@ -19,7 +19,7 @@ sources:
             user_id: "advertising_id"
           relations:
             ad_network:
-              to: source('tenjin', 'ad_networks')
+              to: source('marketing', 'ad_networks')
               type: left_join
               sql: "{{ '{{TARGET}}.id = {{relation.ad_network.dimension.ad_network_id}}' | as_text }}"
       columns:
@@ -57,7 +57,7 @@ sources:
               type: string
           tests:
             - relationships:
-                to: source('tenjin', 'campaigns')
+                to: source('marketing', 'campaigns')
                 field: id
                 relationship: many_to_one
         - name: acquired_at
@@ -90,7 +90,7 @@ sources:
               type: string
           tests:
             - relationships:
-                to: source('tenjin', 'apps')
+                to: source('marketing', 'apps')
                 field: id
                 relationship: many_to_one
                 type: left_join
@@ -117,7 +117,7 @@ sources:
               hidden: true
           tests:
             - relationships:
-                to: source('tenjin', 'ad_engagements')
+                to: source('marketing', 'ad_engagements')
                 field: uuid
                 relationship: many_to_one
                 type: left_join

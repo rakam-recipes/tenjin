@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: tenjin
+  - name: marketing
     tables:
     - name: daily_behavior
       description: Pre-aggregated view from events table. It includes non-cohort metrics(such as dau, arpdau) by date, campaign, country, and site
@@ -49,14 +49,14 @@ sources:
         - name: campaign_id
           tests:
             - relationships:
-                to: source('tenjin', 'campaigns')
+                to: source('marketing', 'campaigns')
                 field: id
                 type: left_join
                 relationship: many_to_one
         - name: country
           tests:
             - relationships:
-                to: source('tenjin', 'countries')
+                to: source('marketing', 'countries')
                 field: code
                 type: left_join
                 relationship: many_to_one

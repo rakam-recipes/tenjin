@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: tenjin
+  - name: marketing
     tables:
     - name: cohort_behavior
       description: >
@@ -66,14 +66,14 @@ sources:
         - name: country_id
           tests:
             - relationships:
-                to: source('tenjin', 'countries')
+                to: source('marketing', 'countries')
                 field: code
                 type: left_join
                 relationship: many_to_one
         - name: campaign_id
           tests:
             - relationships:
-                to: source('tenjin', 'campaigns')
+                to: source('marketing', 'campaigns')
                 field: id
                 type: left_join
                 relationship: many_to_one

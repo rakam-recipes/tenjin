@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: tenjin
+  - name: marketing
     tables:
     - name: daily_country_spend
       description: Includes pre-install metrics(such as imps, clicks, installs, and spend) by date, campaign, and country. “spend” is spend amount converted to USD, and “original_spend” is spend amount in “original_currency”. The model doesn't contain all the spend of daily_spend because some ad-networks don’t have spend by country breakdown.
@@ -17,14 +17,14 @@ sources:
         - name: campaign_id
           tests:
             - relationships:
-                to: source('tenjin', 'campaigns')
+                to: source('marketing', 'campaigns')
                 field: id
                 type: left_join
                 relationship: many_to_one
         - name: country
           tests:
             - relationships:
-                to: source('tenjin', 'countries')
+                to: source('marketing', 'countries')
                 field: code
                 type: left_join
                 relationship: many_to_one

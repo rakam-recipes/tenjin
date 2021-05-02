@@ -1,10 +1,12 @@
 version: 2
 
 sources:
-  - name: tenjin
+  - name: marketing
     tables:
     - name: apps
       description: List of apps
+      meta:
+        hidden: true
       columns:
         - name: name
           meta: &string

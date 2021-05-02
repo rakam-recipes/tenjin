@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: tenjin
+  - name: marketing
     tables:
     - name: reporting_metrics
       description: Includes all non-cohorted metrics that are synced with dashboard data
@@ -63,18 +63,18 @@ sources:
         - name: country
           tests:
             - relationships:
-                to: source('tenjin', 'countries')
+                to: source('marketing', 'countries')
                 field: code
                 relationship: many_to_one
         - name: campaign_id
           tests:
             - relationships:
-                to: source('tenjin', 'campaigns')
+                to: source('marketing', 'campaigns')
                 field: id
                 relationship: many_to_one
         - name: app_id
           tests:
             - relationships:
-                to: source('tenjin', 'apps')
+                to: source('marketing', 'apps')
                 field: id
                 relationship: many_to_one

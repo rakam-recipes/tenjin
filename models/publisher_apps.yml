@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: tenjin
+  - name: marketing
     tables:
     - name: publisher_apps
       description: Publisher campaigns that we get from ad-network API
@@ -13,7 +13,7 @@ sources:
         - name: app_id
           tests:
             - relationships:
-                to: source('tenjin', 'apps')
+                to: source('marketing', 'apps')
                 field: id
                 relationship: many_to_one
         - name: name

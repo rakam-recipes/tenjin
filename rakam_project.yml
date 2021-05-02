@@ -1,4 +1,4 @@
-version: 1
+version: 2
 label: Tenjin DataVault
 description: It provides data models for your Tenjin DataVault
 image: https://github.com/rakam-io/recipes/raw/master/tenjin/logo.png

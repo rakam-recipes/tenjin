@@ -1,10 +1,12 @@
 version: 2
 
 sources:
-  - name: tenjin
+  - name: marketing
     tables:
     - name: targeting_tags
       description: Includes targeting tag information
+      meta:
+        hidden: true
       columns:
         - name: display
           description: "Targeting tag name shown on Tenjin dashboard. (Ex. Gender: Male)"
