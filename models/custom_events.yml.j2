@@ -10,7 +10,7 @@ views:
         #{% set current_schema = custom_schema[schema.event] %}
         - name: "{{schema.event}}"
           label: {{schema.event}}
-          target: {{source('marketing', 'events')}}
+          dataset: {{source('marketing', 'events')}}
           mappings: {{events.dimensions + current_schema.mappings}}
           relations: {{events.dimensions + current_schema.relations}}
           dimensions: {{events.dimensions + current_schema.dimensions}}
