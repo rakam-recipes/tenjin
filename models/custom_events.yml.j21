@@ -10,12 +10,9 @@ views:
         #{% set current_schema = custom_schema[schema.event] %}
         - name: "{{schema.event}}"
           label: {{schema.event}}
-          dataset: {{source('marketing', 'events')}}
-          mappings: {{events.sources[0].tables[0].meta.rakam.mappings | toyaml}}
-          relations: {{events.sources[0].tables[0].meta.rakam.relations | toyaml}}
-          {% set measures = current_schema.measures.update(events.sources[0].tables[0].meta.rakam.measures) %}
-          measures: {{measures | toyaml}}
+          extends: {{source('marketing', 'events')}}
+          measures: {{current_schema.measures | toyaml}}
+          dimensions: {{current_schema.dimensions | toyaml}}
           always_filters:
             - {dimension: event_type, value: "{{row.event}}", operator: equals}
-          columns: {{events.sources[0].tables[0].columns | toyaml}}
         #{% endfor %}
