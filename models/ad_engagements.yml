@@ -45,7 +45,7 @@ sources:
               hidden: true
           tests:
             - relationships:
-                to: source('marketing', 'events')
+                to: source('product', 'events')
                 field: uuid
                 relationship: many_to_one
                 type: left_join
