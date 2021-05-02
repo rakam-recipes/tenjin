@@ -1,7 +1,7 @@
 version: 2
 
-#{% set custom_schema = import('../lib/custom_event_schema.yml') %}
-#{% set events = import('./events.yml') %}
+#{% set custom_schema = import('../lib/custom_event_schema.yml') | fromyaml %}
+#{% set events = import('./events.yml') | fromyaml %}
 
 views:
   - name: product
@@ -11,9 +11,9 @@ views:
         - name: "{{schema.event}}"
           label: {{schema.event}}
           dataset: {{source('marketing', 'events')}}
-          mappings: {{events.dimensions + current_schema.mappings}}
-          relations: {{events.dimensions + current_schema.relations}}
-          dimensions: {{events.dimensions + current_schema.dimensions}}
+          mappings: {{events.events.sources[0].tables[0].meta.rakam.dimensions + current_schema.mappings}}
+          relations: {{events.events.sources[0].tables[0].meta.rakam.dimensions + current_schema.relations}}
+          dimensions: {{events.events.sources[0].tables[0].meta.rakam.dimensions + current_schema.dimensions}}
           always_filters:
           - {dimension: event_type, value: "{{row.event}}", operator: equals}
         #{% endfor %}
