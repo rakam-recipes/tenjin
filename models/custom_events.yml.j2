@@ -11,9 +11,11 @@ views:
         - name: "{{schema.event}}"
           label: {{schema.event}}
           dataset: {{source('marketing', 'events')}}
-          mappings: {{events.events.sources[0].tables[0].meta.rakam.dimensions + current_schema.mappings}}
-          relations: {{events.events.sources[0].tables[0].meta.rakam.dimensions + current_schema.relations}}
-          dimensions: {{events.events.sources[0].tables[0].meta.rakam.dimensions + current_schema.dimensions}}
+          mappings: {{events.sources[0].tables[0].meta.rakam.mappings | toyaml}}
+          relations: {{events.sources[0].tables[0].meta.rakam.relations | toyaml}}
+          {% set measures = current_schema.measures.update(events.sources[0].tables[0].meta.rakam.measures) %}
+          measures: {{measures | toyaml}}
           always_filters:
-          - {dimension: event_type, value: "{{row.event}}", operator: equals}
+            - {dimension: event_type, value: "{{row.event}}", operator: equals}
+          columns: {{events.sources[0].tables[0].columns | toyaml}}
         #{% endfor %}
