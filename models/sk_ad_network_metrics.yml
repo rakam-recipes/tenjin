@@ -1,0 +1,42 @@
+version: 2
+
+sources:
+  - name: marketing
+    tables:
+      - name: sk_ad_network_metrics
+        meta:
+          rakam:
+        columns:
+          - name: date
+            description: Date the SK Ad Network postback was received.
+          - name: ad_network_id
+            meta:
+              rakam.dimension:
+                hidden: true
+            tests:
+              - relationships:
+                  to: source('marketing', 'ad_networks')
+                  field: id
+                  type: left_join
+                  relationship: many_to_one
+          - name: app_id
+            meta:
+              rakam.dimension:
+                hidden: true
+            tests:
+              - relationships:
+                  to: source('marketing', 'apps')
+                  field: id
+                  relationship: many_to_one
+          - name: fidelity_type
+            description: 1 for StoreKit Ads, 0 for view-through ads.
+          - name: conversion_value_count
+            description: to be written
+            meta:
+              rakam.measure:
+                aggregation: sum
+          - name: redownload_count
+            description: Integer count of occurrences of the conversion_value that were redownloads.
+            meta:
+              rakam.measure:
+                aggregation: sum
