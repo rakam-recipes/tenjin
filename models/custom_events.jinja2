@@ -6,6 +6,7 @@ version: 2
 {% for schema in var('custom_events') %}  
   {{ view(
       name = schema.event,
+      category = 'Product',
       label = schema.event,
       measures = current_schema.measures
       dimensions = current_schema.dimensions,

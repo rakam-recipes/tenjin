@@ -1,13 +1,14 @@
 version: 2
 
 sources:
-  - name: product
+  - name: tenjin
     tables:
       - name: events
         description: User event data that comes from Tenjin SDK or 3rd party attribution provider
         meta:
           rakam:
             label: "[All Events]"
+            category: Product
             measures:
               total_events:
                 aggregation: count
