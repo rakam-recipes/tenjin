@@ -1,39 +1,39 @@
 version: 2
 
 sources:
-  - name: marketing
+  - name: tenjin
     tables:
-    - name: daily_spend
-      description: Includes pre-install metrics(such as imps, clicks, installs, and spend) by campaign and date. “spend” is spend amount converted to USD, and “original_spend” is spend amount in “original_currency”
-      meta:
-        rakam:
-          mappings:
-            event_timestamp: date
-            incremental: updated_at
-      columns:
-        - name: campaign_id
-          tests:
-            - relationships:
-                to: source('marketing', 'campaigns')
-                field: id
-                relationship: many_to_one
-        - name: updated_at
-        - name: date
-        - name: spend
-          meta:
-            rakam.measure:
-              aggregation: sum
-              report:
-                prefix: "$"
-        - name: installs
-          meta:
-            rakam.measure:
-              aggregation: sum
-        - name: clicks
-          meta:
-            rakam.measure:
-              aggregation: sum
-        - name: impressions
-          meta:
-            rakam.measure:
-              aggregation: sum
+      - name: daily_spend
+        description: Includes pre-install metrics(such as imps, clicks, installs, and spend) by campaign and date. “spend” is spend amount converted to USD, and “original_spend” is spend amount in “original_currency”
+        meta:
+          rakam:
+            mappings:
+              event_timestamp: date
+              incremental: updated_at
+        columns:
+          - name: campaign_id
+            tests:
+              - relationships:
+                  to: source('tenjin', 'campaigns')
+                  field: id
+                  relationship: many_to_one
+          - name: updated_at
+          - name: date
+          - name: spend
+            meta:
+              rakam.measure:
+                aggregation: sum
+                report:
+                  prefix: "$"
+          - name: installs
+            meta:
+              rakam.measure:
+                aggregation: sum
+          - name: clicks
+            meta:
+              rakam.measure:
+                aggregation: sum
+          - name: impressions
+            meta:
+              rakam.measure:
+                aggregation: sum

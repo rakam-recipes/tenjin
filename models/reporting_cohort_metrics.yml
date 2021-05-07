@@ -1,98 +1,98 @@
 version: 2
 
 sources:
-  - name: marketing
+  - name: tenjin
     tables:
-    - name: reporting_cohort_metrics
-      description: Includes all cohorted metrics that are synced with dashboard data
-      meta:
-        rakam:
-          mappings:
-            event_timestamp: install_date
-          measures:
-            day1_ltv:
-              sql: SUM(CASE WHEN "days_since_install" <= 1 THEN ("publisher_ad_revenue" + "iap_revenue") / 100.0 ELSE 0 END)
-              report:
-                prefix: "$"
-            day2_ltv:
-              sql: SUM(CASE WHEN "days_since_install" <= 2 THEN ("publisher_ad_revenue" + "iap_revenue") / 100.0 ELSE 0 END)
-              report:
-                prefix: "$"
-            day3_ltv:
-              sql: SUM(CASE WHEN "days_since_install" <= 3 THEN ("publisher_ad_revenue" + "iap_revenue") / 100.0 ELSE 0 END)
-              report:
-                prefix: "$"
-            day1_retained_users:
-              sql: SUM(CASE WHEN "days_since_install" = 1 THEN "daily_active_users" ELSE 0 END)
-              report:
-                prefix: "$"
-            day2_retained_users:
-              sql: SUM(CASE WHEN "days_since_install" = 2 THEN "daily_active_users" ELSE 0 END)
-              report:
-                prefix: "$"
-            day3_retained_users:
-              sql: SUM(CASE WHEN "days_since_install" = 3 THEN "daily_active_users" ELSE 0 END)
-              report:
-                prefix: "$"
-      columns:
-        - name: app_id
-          tests:
-            - relationships:
-                to: source('marketing', 'apps')
-                field: id
-                relationship: many_to_one
-        - name: ad_network_id
-          tests:
-            - relationships:
-                to: source('marketing', 'ad_networks')
-                field: id
-                relationship: many_to_one
-        - name: campaign_id
-          tests:
-            - relationships:
-                to: source('marketing', 'campaign_buckets')
-                field: id
-                relationship: many_to_one
-        - name: country
-          tests:
-            - relationships:
-                to: source('marketing', 'countries')
-                field: code
-                type: left_join
-                relationship: many_to_one
-        - name: event_date
-          meta:
-            rakam.dimension:
-              type: date
-        - name: install_date
-          meta:
-            rakam.dimension:
-              type: date
-        - name: platform
-          meta:
-            rakam.dimension:
-              type: string
-        - name: site_id
-          meta:
-            rakam.dimension:
-              type: string
-        - name: daily_active_users
-          meta:
-            rakam.measure:
-              aggregation: average
-        - name: iap_revenue
-          description: sum of in-app purchase revenue in USD cents
-          meta:
-            rakam.measure:
-              aggregation: sum
-              label: In-app Purchase Revenue
-              report:
-                prefix: "$"
-        - name: publisher_ad_revenue
-          description: allocated sum of publisher ad revenue from ad network reporting API in USD cents
-          meta:
-            rakam.measure:
-              aggregation: sum
-              label: In-app Purchase Revenue
-              report:
-                prefix: "$"
+      - name: reporting_cohort_metrics
+        description: Includes all cohorted metrics that are synced with dashboard data
+        meta:
+          rakam:
+            mappings:
+              event_timestamp: install_date
+            measures:
+              day1_ltv:
+                sql: SUM(CASE WHEN "days_since_install" <= 1 THEN ("publisher_ad_revenue" + "iap_revenue") / 100.0 ELSE 0 END)
+                report:
+                  prefix: "$"
+              day2_ltv:
+                sql: SUM(CASE WHEN "days_since_install" <= 2 THEN ("publisher_ad_revenue" + "iap_revenue") / 100.0 ELSE 0 END)
+                report:
+                  prefix: "$"
+              day3_ltv:
+                sql: SUM(CASE WHEN "days_since_install" <= 3 THEN ("publisher_ad_revenue" + "iap_revenue") / 100.0 ELSE 0 END)
+                report:
+                  prefix: "$"
+              day1_retained_users:
+                sql: SUM(CASE WHEN "days_since_install" = 1 THEN "daily_active_users" ELSE 0 END)
+                report:
+                  prefix: "$"
+              day2_retained_users:
+                sql: SUM(CASE WHEN "days_since_install" = 2 THEN "daily_active_users" ELSE 0 END)
+                report:
+                  prefix: "$"
+              day3_retained_users:
+                sql: SUM(CASE WHEN "days_since_install" = 3 THEN "daily_active_users" ELSE 0 END)
+                report:
+                  prefix: "$"
+        columns:
+          - name: app_id
+            tests:
+              - relationships:
+                  to: source('tenjin', 'apps')
+                  field: id
+                  relationship: many_to_one
+          - name: ad_network_id
+            tests:
+              - relationships:
+                  to: source('tenjin', 'ad_networks')
+                  field: id
+                  relationship: many_to_one
+          - name: campaign_id
+            tests:
+              - relationships:
+                  to: source('tenjin', 'campaign_buckets')
+                  field: id
+                  relationship: many_to_one
+          - name: country
+            tests:
+              - relationships:
+                  to: source('tenjin', 'countries')
+                  field: code
+                  type: left_join
+                  relationship: many_to_one
+          - name: event_date
+            meta:
+              rakam.dimension:
+                type: date
+          - name: install_date
+            meta:
+              rakam.dimension:
+                type: date
+          - name: platform
+            meta:
+              rakam.dimension:
+                type: string
+          - name: site_id
+            meta:
+              rakam.dimension:
+                type: string
+          - name: daily_active_users
+            meta:
+              rakam.measure:
+                aggregation: average
+          - name: iap_revenue
+            description: sum of in-app purchase revenue in USD cents
+            meta:
+              rakam.measure:
+                aggregation: sum
+                label: In-app Purchase Revenue
+                report:
+                  prefix: "$"
+          - name: publisher_ad_revenue
+            description: allocated sum of publisher ad revenue from ad network reporting API in USD cents
+            meta:
+              rakam.measure:
+                aggregation: sum
+                label: In-app Purchase Revenue
+                report:
+                  prefix: "$"

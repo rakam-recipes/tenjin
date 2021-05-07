@@ -1,79 +1,79 @@
 version: 2
 
 sources:
-  - name: marketing
+  - name: tenjin
     tables:
-    - name: cohort_behavior
-      description: >
-        Pre-aggregated view from events table. It includes cohort metrics(such as ltv, retained users) by date, campaign, country, and site.
-        xday is day of user's lifetime (relative to acquisition timestamp, starting with 0). So “revenue” on xday = 1 means revenue generated on day 1 after the acquisition.
-      meta:
-        rakam:
-          mappings:
-            event_timestamp: date
-      columns:
-        - name: users
-          description: The number of unique users
-          meta:
-            rakam.measure:
-              name: total_users
-              aggregation: sum
-        - name: weekly_users
-          description: The number of unique users in the week
-          meta:
-            rakam.measure:
-              aggregation: sum
-        - name: monthly_users
-          description: The number of unique users in the month
-          meta:
-            rakam.measure:
-              name: total_users
-              aggregation: sum
-        - name: sessions
-          description: The number of unique users in the month
-          meta:
-            rakam.measure:
-              name: total_sessions
-              aggregation: sum
-        - name: revenue
-          description: The number of unique users in the month
-          meta:
-            rakam.measure:
-              name: total_revenue
-              aggregation: sum
-        - name: transactions
-          description: The number of unique users in the month
-          meta:
-            rakam.measure:
-              name: total_transactions
-              aggregation: sum
-        - name: date
-          meta:
-            rakam.dimension:
-              type: date
-        - name: xday
-          description: Relative to acquisition timestamp, starting with 0
-          meta:
-            rakam.dimension:
-              label: User's Lifetime In days
-              report:
-                suffix: " days"
-              type: date
-        - name: site_id
-          meta:
-            rakam.dimension:
-              type: string
-        - name: country_id
-          tests:
-            - relationships:
-                to: source('marketing', 'countries')
-                field: code
-                type: left_join
-                relationship: many_to_one
-        - name: campaign_id
-          tests:
-            - relationships:
-                to: source('marketing', 'campaigns')
-                field: id
-                type: left_join
-                relationship: many_to_one
+      - name: cohort_behavior
+        description: >
+          Pre-aggregated view from events table. It includes cohort metrics(such as ltv, retained users) by date, campaign, country, and site.
+          xday is day of user's lifetime (relative to acquisition timestamp, starting with 0). So “revenue” on xday = 1 means revenue generated on day 1 after the acquisition.
+        meta:
+          rakam:
+            mappings:
+              event_timestamp: date
+        columns:
+          - name: users
+            description: The number of unique users
+            meta:
+              rakam.measure:
+                name: total_users
+                aggregation: sum
+          - name: weekly_users
+            description: The number of unique users in the week
+            meta:
+              rakam.measure:
+                aggregation: sum
+          - name: monthly_users
+            description: The number of unique users in the month
+            meta:
+              rakam.measure:
+                name: total_users
+                aggregation: sum
+          - name: sessions
+            description: The number of unique users in the month
+            meta:
+              rakam.measure:
+                name: total_sessions
+                aggregation: sum
+          - name: revenue
+            description: The number of unique users in the month
+            meta:
+              rakam.measure:
+                name: total_revenue
+                aggregation: sum
+          - name: transactions
+            description: The number of unique users in the month
+            meta:
+              rakam.measure:
+                name: total_transactions
+                aggregation: sum
+          - name: date
+            meta:
+              rakam.dimension:
+                type: date
+          - name: xday
+            description: Relative to acquisition timestamp, starting with 0
+            meta:
+              rakam.dimension:
+                label: User's Lifetime In days
+                report:
+                  suffix: " days"
+                type: date
+          - name: site_id
+            meta:
+              rakam.dimension:
+                type: string
+          - name: country_id
+            tests:
+              - relationships:
+                  to: source('tenjin', 'countries')
+                  field: code
+                  type: left_join
+                  relationship: many_to_one
+          - name: campaign_id
+            tests:
+              - relationships:
+                  to: source('tenjin', 'campaigns')
+                  field: id
+                  type: left_join
+                  relationship: many_to_one

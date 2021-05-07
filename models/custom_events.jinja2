@@ -1,0 +1,16 @@
+version: 2
+
+{% set custom_schema = import('../lib/custom_event_schema.yml') | fromyaml %}
+{% set events = import('./events.yml') | fromyaml %}
+
+{% for schema in var('custom_events') %}  
+  {{ view(
+      name = schema.event,
+      label = schema.event,
+      measures = current_schema.measures
+      dimensions = current_schema.dimensions,
+      always_filters = [{dimension: event_type, value: row.event, operator: 'equals'}]
+    ) }}
+
+  select * from {{source('tenjin', 'events')}}
+{% endfor %}

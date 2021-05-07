@@ -1,68 +1,68 @@
 version: 2
 
 sources:
-  - name: marketing
+  - name: tenjin
     tables:
-    - name: daily_behavior
-      description: Pre-aggregated view from events table. It includes non-cohort metrics(such as dau, arpdau) by date, campaign, country, and site
-      meta:
-        rakam:
-          mappings:
-            event_timestamp: date
-      columns:
-        - name: date
-          meta:
-            rakam.dimension:
-              type: timestamp
-        - name: site_id
-          meta:
-            rakam.dimension:
-              type: string
-        - name: weekly_users
-          description: "the number of unique users in the week"
-          meta:
-            rakam.measure:
-              aggregation: "average"
-        - name: monthly_users
-          description: "the number of unique users in the month"
-          meta:
-            rakam.measure:
-              aggregation: "average"
-        - name: sessions
-          description: "the number of sessions"
-          meta:
-            rakam.measure:
-              name: total_sessions
-              aggregation: sum
-        - name: revenue
-          description: "revenue amount in USD cents"
-          meta:
-            rakam.measure:
-              name: total_sessions
-              aggregation: sum
-        - name: users
-          description: "the number of unique users"
-          meta:
-            rakam.measure:
-              aggregation: "sum"
-              name: unique_users
-        - name: campaign_id
-          tests:
-            - relationships:
-                to: source('marketing', 'campaigns')
-                field: id
-                type: left_join
-                relationship: many_to_one
-        - name: country
-          tests:
-            - relationships:
-                to: source('marketing', 'countries')
-                field: code
-                type: left_join
-                relationship: many_to_one
-        - name: transactions
-          description: the number of purchase transactions
-          meta:
-            rakam.measure:
-              name: total_transactions
-              aggregation: sum
+      - name: daily_behavior
+        description: Pre-aggregated view from events table. It includes non-cohort metrics(such as dau, arpdau) by date, campaign, country, and site
+        meta:
+          rakam:
+            mappings:
+              event_timestamp: date
+        columns:
+          - name: date
+            meta:
+              rakam.dimension:
+                type: timestamp
+          - name: site_id
+            meta:
+              rakam.dimension:
+                type: string
+          - name: weekly_users
+            description: "the number of unique users in the week"
+            meta:
+              rakam.measure:
+                aggregation: "average"
+          - name: monthly_users
+            description: "the number of unique users in the month"
+            meta:
+              rakam.measure:
+                aggregation: "average"
+          - name: sessions
+            description: "the number of sessions"
+            meta:
+              rakam.measure:
+                name: total_sessions
+                aggregation: sum
+          - name: revenue
+            description: "revenue amount in USD cents"
+            meta:
+              rakam.measure:
+                name: total_sessions
+                aggregation: sum
+          - name: users
+            description: "the number of unique users"
+            meta:
+              rakam.measure:
+                aggregation: "sum"
+                name: unique_users
+          - name: campaign_id
+            tests:
+              - relationships:
+                  to: source('tenjin', 'campaigns')
+                  field: id
+                  type: left_join
+                  relationship: many_to_one
+          - name: country
+            tests:
+              - relationships:
+                  to: source('tenjin', 'countries')
+                  field: code
+                  type: left_join
+                  relationship: many_to_one
+          - name: transactions
+            description: the number of purchase transactions
+            meta:
+              rakam.measure:
+                name: total_transactions
+                aggregation: sum

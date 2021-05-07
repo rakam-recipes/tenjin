@@ -1,17 +1,17 @@
 version: 2
 
 sources:
-  - name: marketing
+  - name: tenjin
     tables:
-    - name: countries
-      meta:
-        hidden: true
-      columns:
-        - name: name
-          meta:
-            rakam.dimension:
-              type: string
-        - name: code
-          meta:
-            rakam.dimension:
-              type: string
+      - name: countries
+        meta:
+          hidden: true
+        columns:
+          - name: name
+            meta:
+              rakam.dimension:
+                type: string
+          - name: code
+            meta:
+              rakam.dimension:
+                type: string

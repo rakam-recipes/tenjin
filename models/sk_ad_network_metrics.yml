@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: marketing
+  - name: tenjin
     tables:
       - name: sk_ad_network_metrics
         meta:
@@ -15,7 +15,7 @@ sources:
                 hidden: true
             tests:
               - relationships:
-                  to: source('marketing', 'ad_networks')
+                  to: source('tenjin', 'ad_networks')
                   field: id
                   type: left_join
                   relationship: many_to_one
@@ -25,7 +25,7 @@ sources:
                 hidden: true
             tests:
               - relationships:
-                  to: source('marketing', 'apps')
+                  to: source('tenjin', 'apps')
                   field: id
                   relationship: many_to_one
           - name: fidelity_type

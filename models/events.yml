@@ -3,127 +3,127 @@ version: 2
 sources:
   - name: product
     tables:
-    - name: events
-      description: User event data that comes from Tenjin SDK or 3rd party attribution provider
-      meta:
-        rakam:
-          label: "[All Events]"
-          measures:
-            total_events:
-              aggregation: count
-            unique_users:
-              aggregation: count_unique
-              sql: "{{ 'coalesce({{TABLE}}.advertising_id, {{TABLE}}.developer_device_id)' | as_text }}"
-          mappings:
-            event_timestamp: created_at
-            incremental: "created_at"
-            user_id: "advertising_id"
-          relations:
-            ad_network:
-              to: source('marketing', 'ad_networks')
-              type: left_join
-              sql: "{{ '{{TARGET}}.id = {{relation.ad_network.dimension.ad_network_id}}' | as_text }}"
-      columns:
-        - name: created_at
-          description: timestamp when the event was created
-          meta:
-            rakam.dimension:
-              type: timestamp
-        - name: bundle_id
-          description: "App's bundle ID. Ex: com.tenjin.wordfinder"
-          meta:
-            rakam.dimension:
-              type: string
-        - name: platform
-          description: app's platform (ios or android)
-          meta:
-            rakam.dimension:
-              type: string
-        - name: os_version
-          meta:
-            rakam.dimension:
-              type: string
-        - name: app_version
-          meta:
-            rakam.dimension:
-              type: string
-        - name: event_type
-          meta:
-            rakam.dimension:
-              label: Custom Event Type
-              type: string
-        - name: source_campaign_id
-          meta:
-            rakam.dimension:
-              type: string
-          tests:
-            - relationships:
-                to: source('marketing', 'campaigns')
-                field: id
-                relationship: many_to_one
-        - name: acquired_at
-          meta:
-            rakam.dimension:
-              label: User Acquired At
-              type: string
-        - name: product_id
-          description: "Product id for the purchase event (ex. com.tenjin.wordfinder.package)"
-          meta:
-            rakam.dimension:
-              type: string
-        - name: country
-          meta:
-            rakam.dimension:
-              type: string
-        - name: site_id
-          description: campaign's publisher ID if the campaign is paid campaign
-          meta:
-            rakam.dimension:
-              type: string
-        - name: developer_device_id
-          description: IDFV for iOS. Empty for Android. Lower case, without hyphen.
-          meta:
-            rakam.dimension:
-              type: string
-        - name: app_id
-          meta:
-            rakam.dimension:
-              type: string
-          tests:
-            - relationships:
-                to: source('marketing', 'apps')
-                field: id
-                relationship: many_to_one
+      - name: events
+        description: User event data that comes from Tenjin SDK or 3rd party attribution provider
+        meta:
+          rakam:
+            label: "[All Events]"
+            measures:
+              total_events:
+                aggregation: count
+              unique_users:
+                aggregation: count_unique
+                sql: "{{ 'coalesce({{TABLE}}.advertising_id, {{TABLE}}.developer_device_id)' | as_text }}"
+            mappings:
+              event_timestamp: created_at
+              incremental: "created_at"
+              user_id: "advertising_id"
+            relations:
+              ad_network:
+                to: source('tenjin', 'ad_networks')
                 type: left_join
-        - name: device
-          meta:
-            rakam.dimension:
-              name: device_type
-              type: string
-        - name: creative_name
-          meta:
-            rakam.dimension:
-              type: string
-        - name: ip_address
-          meta:
-            rakam.dimension:
-              type: string
-            rakam.measure:
-              name: unique_devices
-              aggregation: count_unique
-        - name: source_uuid
-          meta:
-            rakam.dimension:
-              type: string
-              hidden: true
-          tests:
-            - relationships:
-                to: source('marketing', 'ad_engagements')
-                field: uuid
-                relationship: many_to_one
-                type: left_join
-        - name: advertising_id
-          description: IDFA for iOS or Google advertising ID for Android. Lower case, without hyphen
-          meta:
-            rakam.dimension:
-              type: string
+                sql: "{{ '{{TARGET}}.id = {{relation.ad_network.dimension.ad_network_id}}' | as_text }}"
+        columns:
+          - name: created_at
+            description: timestamp when the event was created
+            meta:
+              rakam.dimension:
+                type: timestamp
+          - name: bundle_id
+            description: "App's bundle ID. Ex: com.tenjin.wordfinder"
+            meta:
+              rakam.dimension:
+                type: string
+          - name: platform
+            description: app's platform (ios or android)
+            meta:
+              rakam.dimension:
+                type: string
+          - name: os_version
+            meta:
+              rakam.dimension:
+                type: string
+          - name: app_version
+            meta:
+              rakam.dimension:
+                type: string
+          - name: event_type
+            meta:
+              rakam.dimension:
+                label: Custom Event Type
+                type: string
+          - name: source_campaign_id
+            meta:
+              rakam.dimension:
+                type: string
+            tests:
+              - relationships:
+                  to: source('tenjin', 'campaigns')
+                  field: id
+                  relationship: many_to_one
+          - name: acquired_at
+            meta:
+              rakam.dimension:
+                label: User Acquired At
+                type: string
+          - name: product_id
+            description: "Product id for the purchase event (ex. com.tenjin.wordfinder.package)"
+            meta:
+              rakam.dimension:
+                type: string
+          - name: country
+            meta:
+              rakam.dimension:
+                type: string
+          - name: site_id
+            description: campaign's publisher ID if the campaign is paid campaign
+            meta:
+              rakam.dimension:
+                type: string
+          - name: developer_device_id
+            description: IDFV for iOS. Empty for Android. Lower case, without hyphen.
+            meta:
+              rakam.dimension:
+                type: string
+          - name: app_id
+            meta:
+              rakam.dimension:
+                type: string
+            tests:
+              - relationships:
+                  to: source('tenjin', 'apps')
+                  field: id
+                  relationship: many_to_one
+                  type: left_join
+          - name: device
+            meta:
+              rakam.dimension:
+                name: device_type
+                type: string
+          - name: creative_name
+            meta:
+              rakam.dimension:
+                type: string
+          - name: ip_address
+            meta:
+              rakam.dimension:
+                type: string
+              rakam.measure:
+                name: unique_devices
+                aggregation: count_unique
+          - name: source_uuid
+            meta:
+              rakam.dimension:
+                type: string
+                hidden: true
+            tests:
+              - relationships:
+                  to: source('tenjin', 'ad_engagements')
+                  field: uuid
+                  relationship: many_to_one
+                  type: left_join
+          - name: advertising_id
+            description: IDFA for iOS or Google advertising ID for Android. Lower case, without hyphen
+            meta:
+              rakam.dimension:
+                type: string

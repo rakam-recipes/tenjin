@@ -1,13 +1,13 @@
 version: 2
 
 sources:
-  - name: marketing
+  - name: tenjin
     tables:
-    - name: ad_networks
-      meta:
-        hidden: true
-      columns:
-        - name: name
-          meta:
-            rakam.dimension:
-              type: string
+      - name: ad_networks
+        meta:
+          hidden: true
+        columns:
+          - name: name
+            meta:
+              rakam.dimension:
+                type: string

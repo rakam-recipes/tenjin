@@ -1,23 +1,23 @@
 version: 2
 
 sources:
-  - name: marketing
+  - name: tenjin
     tables:
-    - name: apps
-      description: List of apps
-      meta:
-        hidden: true
-      columns:
-        - name: name
-          meta: &string
-            rakam.dimension:
-              type: string
-        - name: store_id
-          meta: *string
-        - name: platform
-          meta: *string
-        - name: platform
-          meta: *string
-        - name: bundle_id
-          description: ex. com.tenjin.wordfinder
-          meta: *string
+      - name: apps
+        description: List of apps
+        meta:
+          hidden: true
+        columns:
+          - name: name
+            meta: &string
+              rakam.dimension:
+                type: string
+          - name: store_id
+            meta: *string
+          - name: platform
+            meta: *string
+          - name: platform
+            meta: *string
+          - name: bundle_id
+            description: ex. com.tenjin.wordfinder
+            meta: *string

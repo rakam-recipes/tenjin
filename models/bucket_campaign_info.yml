@@ -1,36 +1,36 @@
 version: 2
 
 sources:
-  - name: marketing
+  - name: tenjin
     tables:
-    - name: bucket_campaign_info
-      description: A view that joins campaign buckets and campaigns table
-      columns:
-        - name: id
-          meta: &string
-            rakam.dimension:
-              type: string
-        - name: name
-          meta:
-            rakam.dimension:
-              type: string
-              hidden: true
-          tests:
-            - relationships:
-                to: source('marketing', 'apps')
-                field: id
-                type: left_join
-                relationship: many_to_one
-        - name: app_id
-          meta: *string
-        - name: ad_network_id
-          meta:
-            rakam.dimension:
-              type: string
-              hidden: true
-          tests:
-            - relationships:
-                to: source('marketing', 'ad_networks')
-                field: id
-                type: left_join
-                relationship: many_to_one
+      - name: bucket_campaign_info
+        description: A view that joins campaign buckets and campaigns table
+        columns:
+          - name: id
+            meta: &string
+              rakam.dimension:
+                type: string
+          - name: name
+            meta:
+              rakam.dimension:
+                type: string
+                hidden: true
+            tests:
+              - relationships:
+                  to: source('tenjin', 'apps')
+                  field: id
+                  type: left_join
+                  relationship: many_to_one
+          - name: app_id
+            meta: *string
+          - name: ad_network_id
+            meta:
+              rakam.dimension:
+                type: string
+                hidden: true
+            tests:
+              - relationships:
+                  to: source('tenjin', 'ad_networks')
+                  field: id
+                  type: left_join
+                  relationship: many_to_one

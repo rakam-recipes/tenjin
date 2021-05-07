@@ -1,19 +1,19 @@
 version: 2
 
 sources:
-  - name: marketing
+  - name: tenjin
     tables:
-    - name: publisher_apps
-      description: Publisher campaigns that we get from ad-network API
-      meta:
-        rakam:
-          mappings:
-            event_timestamp: date
-      columns:
-        - name: app_id
-          tests:
-            - relationships:
-                to: source('marketing', 'apps')
-                field: id
-                relationship: many_to_one
-        - name: name
+      - name: publisher_apps
+        description: Publisher campaigns that we get from ad-network API
+        meta:
+          rakam:
+            mappings:
+              event_timestamp: date
+        columns:
+          - name: app_id
+            tests:
+              - relationships:
+                  to: source('tenjin', 'apps')
+                  field: id
+                  relationship: many_to_one
+          - name: name
