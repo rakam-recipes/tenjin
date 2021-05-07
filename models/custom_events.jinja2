@@ -6,7 +6,7 @@
 
   {{ view(
       name = 'tenjin_event_' ~ schema.name,
-      extends: source('tenjin', 'events'),
+      extends = source('tenjin', 'events'),
       category = 'Product',
       label = schema.event,
       measures = current_schema.measures,
