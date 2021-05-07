@@ -16,7 +16,9 @@ variables:
     parent: schema
     required: false
     options:
-      sql: select distinct event from events where event is not null and event_type = 'event'
+      sql: >
+        select regexp_replace(LOWER(event), '[^a-z0-9_]', '_') as name, max(event) as event from events 
+        where event is not null and event_type = 'event' group by 1
     description:
       If you want to add your custom events as models, you can run the
       SQL query.

@@ -7,6 +7,7 @@ sources:
         description: Publisher campaigns that we get from ad-network API
         meta:
           rakam:
+            category: Marketing
             mappings:
               event_timestamp: date
         columns:

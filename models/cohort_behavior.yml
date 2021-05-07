@@ -9,6 +9,7 @@ sources:
           xday is day of user's lifetime (relative to acquisition timestamp, starting with 0). So “revenue” on xday = 1 means revenue generated on day 1 after the acquisition.
         meta:
           rakam:
+            category: Marketing
             mappings:
               event_timestamp: date
         columns:

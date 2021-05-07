@@ -6,6 +6,7 @@ sources:
       - name: sk_ad_network_metrics
         meta:
           rakam:
+            category: Marketing
         columns:
           - name: date
             description: Date the SK Ad Network postback was received.

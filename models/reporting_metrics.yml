@@ -5,6 +5,9 @@ sources:
     tables:
       - name: reporting_metrics
         description: Includes all non-cohorted metrics that are synced with dashboard data
+        meta:
+          rakam:
+            category: Marketing
         columns:
           - name: date
             meta:

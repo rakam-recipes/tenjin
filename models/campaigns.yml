@@ -6,7 +6,9 @@ sources:
       - name: campaigns
         description: Campaigns that users are attributed to, or campaigns from ad-networks API
         meta:
-          hidden: true
+          rakam:
+            hidden: true
+            category: Marketing
         columns:
           - name: name
           - name: ad_network_id

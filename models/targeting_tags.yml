@@ -6,7 +6,9 @@ sources:
       - name: targeting_tags
         description: Includes targeting tag information
         meta:
-          hidden: true
+          rakam:
+            hidden: true
+            category: Marketing
         columns:
           - name: display
             description: "Targeting tag name shown on Tenjin dashboard. (Ex. Gender: Male)"

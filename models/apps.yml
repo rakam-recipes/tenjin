@@ -6,7 +6,9 @@ sources:
       - name: apps
         description: List of apps
         meta:
-          hidden: true
+          rakam:
+            category: Marketing
+            hidden: true
         columns:
           - name: name
             meta: &string

@@ -5,8 +5,8 @@
   {% set current_schema = custom_schema[schema.event] %}
 
   {{ view(
-      category = 'Product',
       name = 'tenjin_event_' ~ generate_slug(schema.event),
+      category = 'Product',
       label = schema.event,
       measures = current_schema.measures,
       dimensions = current_schema.dimensions,

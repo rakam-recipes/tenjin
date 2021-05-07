@@ -5,6 +5,9 @@ sources:
     tables:
       - name: bucket_campaign_info
         description: A view that joins campaign buckets and campaigns table
+        meta:
+          rakam:
+            category: Marketing
         columns:
           - name: id
             meta: &string

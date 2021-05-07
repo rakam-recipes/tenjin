@@ -5,6 +5,10 @@ sources:
     tables:
       - name: campaign_buckets
         description: List of campaign buckets
+        meta:
+          rakam:
+            hidden: true
+            category: Marketing
         columns:
           - name: name
             meta:

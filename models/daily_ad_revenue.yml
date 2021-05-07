@@ -7,6 +7,7 @@ sources:
         description: Includes ad revenue data by publisher campaigns, date, and country
         meta:
           rakam:
+            category: Marketing
             mappings:
               event_timestamp: updated_at
         columns:
