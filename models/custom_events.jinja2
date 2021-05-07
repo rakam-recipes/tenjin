@@ -6,7 +6,7 @@
       name = schema.event,
       category = 'Product',
       label = schema.event,
-      measures = current_schema.measures
+      measures = current_schema.measures,
       dimensions = current_schema.dimensions,
       always_filters = [{dimension: event_type, value: row.event, operator: 'equals'}]
     ) }}
