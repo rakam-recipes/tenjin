@@ -2,6 +2,8 @@
 {% set events = import('./events.yml') | fromyaml %}
 
 {% for schema in var('custom_events') %}  
+  {% set current_schema = custom_schema[schema.event] %}
+  
   {{ view(
       name = schema.event,
       category = 'Product',
