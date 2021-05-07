@@ -5,13 +5,12 @@
   {% set current_schema = custom_schema[schema.event] %}
 
   {{ view(
-      name = 'tenjin_event_' ~ generate_slug(schema.event),
+      name = 'tenjin_event_' ~ schema.name,
+      extends: source('tenjin', 'events'),
       category = 'Product',
       label = schema.event,
       measures = current_schema.measures,
       dimensions = current_schema.dimensions,
       always_filters = [{dimension: event_type, value: row.event, operator: 'equals'}]
     ) }}
-
-  select * from {{source('tenjin', 'events')}}
 {% endfor %}
