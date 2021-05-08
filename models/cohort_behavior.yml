@@ -19,17 +19,6 @@ sources:
               rakam.measure:
                 name: total_users
                 aggregation: sum
-          - name: weekly_users
-            description: The number of unique users in the week
-            meta:
-              rakam.measure:
-                aggregation: sum
-          - name: monthly_users
-            description: The number of unique users in the month
-            meta:
-              rakam.measure:
-                name: total_users
-                aggregation: sum
           - name: sessions
             description: The number of unique users in the month
             meta:
