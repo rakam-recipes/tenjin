@@ -5,8 +5,9 @@ sources:
     tables:
       - name: ad_networks
         meta:
-          category: Marketing
-          hidden: true
+          rakam:
+            category: Marketing
+            hidden: true
         columns:
           - name: name
             meta:
