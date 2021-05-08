@@ -37,18 +37,27 @@ sources:
                   prefix: "$"
         columns:
           - name: app_id
+            meta:
+              rakam.dimension:
+                hidden: true
             tests:
               - relationships:
                   to: source('tenjin', 'apps')
                   field: id
                   relationship: many_to_one
           - name: ad_network_id
+            meta:
+              rakam.dimension:
+                hidden: true
             tests:
               - relationships:
                   to: source('tenjin', 'ad_networks')
                   field: id
                   relationship: many_to_one
           - name: campaign_id
+            meta:
+              rakam.dimension:
+                hidden: true
             tests:
               - relationships:
                   to: source('tenjin', 'campaign_buckets')
