@@ -14,7 +14,7 @@ sources:
                 aggregation: count
               unique_users:
                 aggregation: count_unique
-                sql: "coalesce({TABLE}.advertising_id, {TABLE}.developer_device_id)'"
+                sql: "coalesce({TABLE}.advertising_id, {TABLE}.developer_device_id)"
             mappings:
               event_timestamp: created_at
               incremental: "created_at"
