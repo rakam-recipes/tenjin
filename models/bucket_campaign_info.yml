@@ -7,6 +7,7 @@ sources:
         description: A view that joins campaign buckets and campaigns table
         meta:
           rakam:
+            hidden: true
             category: Marketing
         columns:
           - name: id
