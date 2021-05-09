@@ -13,7 +13,7 @@ sources:
             measures:
               total_rows:
                 label: Total clicks
-                aggregation: sum
+                aggregation: count
         columns:
           - name: campaign_id
             tests:

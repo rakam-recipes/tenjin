@@ -40,16 +40,16 @@ sources:
                   field: id
                   relationship: many_to_one
                   type: left_join
-          - name: source_uuid
-            meta:
-              rakam.dimension:
-                hidden: true
-            tests:
-              - relationships:
-                  to: source('tenjin', 'events')
-                  field: uuid
-                  relationship: many_to_one
-                  type: left_join
+          # - name: uuid
+          #   meta:
+          #     rakam.dimension:
+          #       hidden: true
+          #   tests:
+          #     - relationships:
+          #         to: source('tenjin', 'events')
+          #         field: source_uuid
+          #         relationship: many_to_one
+          #         type: left_join
           - name: ip_address
             meta:
               rakam.measure:
