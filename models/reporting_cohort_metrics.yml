@@ -25,16 +25,10 @@ sources:
                   prefix: "$"
               day1_retained_users:
                 sql: SUM(CASE WHEN "days_since_install" = 1 THEN "daily_active_users" ELSE 0 END)
-                report:
-                  prefix: "$"
               day2_retained_users:
                 sql: SUM(CASE WHEN "days_since_install" = 2 THEN "daily_active_users" ELSE 0 END)
-                report:
-                  prefix: "$"
               day3_retained_users:
                 sql: SUM(CASE WHEN "days_since_install" = 3 THEN "daily_active_users" ELSE 0 END)
-                report:
-                  prefix: "$"
         columns:
           - name: app_id
             meta:
