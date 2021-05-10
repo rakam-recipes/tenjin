@@ -11,6 +11,6 @@
       label = schema.event,
       measures = current_schema.measures,
       dimensions = current_schema.dimensions,
-      always_filters = [{dimension: event_type, value: row.event, operator: 'equals'}]
+      always_filters = [{dimension: 'event_type', value: schema.event, operator: 'equals'}]
     ) }}
 {% endfor %}
